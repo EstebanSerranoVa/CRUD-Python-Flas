@@ -1,0 +1,46 @@
+{% include 'header.html' %}
+
+    <br/>
+    <a href="{{ url_for('crear') }}" class="btn btn-success">
+        Ingresar Valija
+    </a>
+    <br/>
+    <br/>
+
+
+
+    
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Foto</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for valija in valijas %}
+                
+            
+            <tr>
+                <td>{{ valija[0] }}</td>
+                <td>
+                    <img class="img-thumbnail" width="100" src="uploads/{{ valija[2] }}" alt="">
+                    
+                </td>
+                <td>{{ valija[1] }}</td>
+                <td>{{ valija[3] }}</td>
+                <td><a class="btn btn-warning" href="/editar/{{ valija[0] }}">Editar</a> | 
+                    <a onclick="return confirm('Desea borrar la Valija?')" class="btn btn-danger" href="/destroy/{{ valija[0] }}">Eliminar</a>
+                </td>
+
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
+    </table>
+
+    {% include 'footer.html' %}
